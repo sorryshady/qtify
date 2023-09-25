@@ -1,0 +1,25 @@
+.mobile{
+  display: none;
+}
+.desktop{
+  width: 35rem;
+}
+@media screen and (max-width: 880px) {
+  .desktop{
+    width: 30rem;
+  }
+}
+@media screen and (max-width: 840px) {
+  .desktop{
+    width: 25rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .mobile{
+    margin: 1rem 1.5rem;
+    display: flex;
+  }
+  .desktop{
+    display: none;
+  }
+}
