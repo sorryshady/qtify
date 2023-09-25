@@ -4,6 +4,9 @@
 .desktop{
   width: 35rem;
 }
+.content{
+  margin: 1rem;
+}
 @media screen and (max-width: 880px) {
   .desktop{
     width: 30rem;
