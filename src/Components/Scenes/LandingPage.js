@@ -12,9 +12,11 @@ import {
 } from '../../Api/api'
 import AlbumSection from '../AlbumSection/AlbumSection'
 import SongSection from '../SongSection/SongSection'
+import { useCallback } from 'react'
 const LandingPage = () => {
   const [data, setData] = useState([])
-  const fetchData = async () => {
+  const [searchData, setSearchData] = useState([])
+  const fetchData = useCallback(async () => {
     try {
       const albums = await fetchAlbums()
       const songs = await fetchSongs()
@@ -22,22 +24,23 @@ const LandingPage = () => {
       genres.data.unshift({ key: 'all', label: 'All' })
       const faq = await fetchFaqData()
       const dataObj = { ...albums, songs, genres: genres.data, faq: faq.data }
-      console.log(dataObj)
       setData(dataObj)
+      const searchDataObj = { ...albums }
+      setSearchData(searchDataObj)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
-  }
+  }, [])
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [fetchData])
 
   return (
     <>
       <NavBar>
-        <SearchBar className={styles.desktop} />
+        <SearchBar className={styles.desktop} data={searchData} />
       </NavBar>
-      <SearchBar className={styles.mobile} />
+      <SearchBar className={styles.mobile} data={searchData} />
       <HeroSection />
       <div className={styles.content}>
         <AlbumSection

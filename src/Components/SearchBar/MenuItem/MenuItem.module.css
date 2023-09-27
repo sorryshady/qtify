@@ -1,0 +1,24 @@
+.menuItemContainer{
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin: 1rem 0;
+
+}
+.img{
+  width: 3rem;
+  height: 3rem;
+}
+.info{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.follows{
+  margin-right: 1rem;
+}
+.albumName{
+  color: white;
+}
